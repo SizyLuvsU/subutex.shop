@@ -1,0 +1,237 @@
+/* Oh hai! */
+
+body { 
+    background-image: url("jani.gif");
+    margin: 0;
+    padding: 0;
+    font: 12px/32px monospace;
+}
+
+a {color: rgba(255, 216, 0, 1);}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 32px;
+    overflow: hidden;
+    zoom: 1;
+    background-color: rgba(0,0,0,0.8);
+    color: #DDD;
+}
+
+#footer a {
+    color: #DDD;
+}
+
+#footer-left {
+    width: 205px;
+    float: left;
+    padding-left: 20px;
+}
+
+#footer-right {
+    float: right;
+}
+
+#footer-right form {
+    float: right;
+    padding: 0;
+    line-height: 10px;
+}
+
+
+#donate {
+    float: right;
+    margin: 3px 7px 0;
+}
+
+#helptext {
+    float: left;
+    margin: 0 10px 0;
+    font-weight: bolder;
+}
+
+@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+    body { background: url(jani2.gif); background-size: 384px 80px; }
+}
+
+.centre {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 5%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.circle {
+    stroke: #f8aa28;
+    stroke-dasharray: 650;
+    stroke-dashoffset: 650;
+    -webkit-transition: all 0.5s ease-in-out;
+    opacity: 0.3;
+}
+
+.playBut {
+    /*  border: 1px solid red;*/
+    display: inline-block;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transition: all 0.5s ease;
+}
+
+.playBut .triangle {
+    -webkit-transition: all 0.7s ease-in-out;
+    stroke-dasharray: 240;
+    stroke-dashoffset: 480;
+    stroke: #FFF;
+    transform: translateY(0);
+}
+
+.playBut:hover .triangle {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    stroke: #f8aa28;
+    animation: nudge 0.7s ease-in-out;
+}
+
+@keyframes nudge {
+    0% {
+    transform: translateX(0);
+  }
+    30% {
+    transform: translateX(-5px);
+  }
+    50% {
+    transform: translateX(5px);
+  }
+    70% {
+    transform: translateX(-2px);
+  }
+    100% {
+    transform: translateX(0);
+  }
+}
+
+.playBut:hover .circle {
+    stroke-dashoffset: 0;
+    opacity: 1;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    min-height:100vh;
+    max-height:100vh;
+    margin:0;
+    color:#fff;
+    
+    display:flex;
+    flex-direction:column;
+    a {
+       color:inherit;
+       &:not(:hover) {
+          text-decoration:none;
+       }
+    }
+ 
+    background: #222222;
+    background: -webkit-linear-gradient(to top, #232526, #414345);
+    #link-a-me {
+       position: absolute;
+       bottom:80px;
+       right:20px;
+       height:60px;
+       width:60px;
+       background:url(https://i.imgur.com/xoxkq1r.png);
+       background-size:cover;
+       z-index:1;
+       animation: pop-in 120s ease-out;
+    }
+    .content {
+       overflow:hidden;
+       flex-grow:1;
+       height:calc(100% - 80px);
+       .lyrics {
+          padding:50vh 0;
+          min-height:calc(100vh - 80px);
+          width:calc(100% - 40px);
+          margin:0 20px;
+          text-align:center;
+          transition: all .25s;
+          position: relative;
+          >div {
+             position: relative;
+             font-size:40px;
+             line-height:80px;
+             color:#666;
+             transition: all .25s;
+             &:before {
+                content:attr(note);
+                position: absolute;
+                top:0px;
+                left:50%;
+                transform:translate(-50%,-50%);
+                font-size:18px;
+             }
+             &.highlighted {
+                color:#fff;
+                font-size:48px;
+             }
+          }
+       }
+    }
+    .player {
+       z-index:10;
+       background: #F9F9F9;
+       color:#000;
+       min-height:80px;
+       max-height:80px;
+       display:flex;
+       flex-direction:row;
+       .left {
+          width:80px;
+          background-image:url(https://i.scdn.co/image/9ca53beeb365f468b023a8360634f309325b5487);
+          background-size:cover;
+       }
+       .right {
+          flex-grow:1;
+          display:flex;
+          flex-direction:column;
+          .top {
+             flex-grow:1;
+             display:flex;
+             flex-direction:column;
+             justify-content:center;
+             padding-left:10px;
+             .song {
+                font-size:1.2em;
+                font-weight:600;
+             }
+          }
+          .bottom {
+             display:flex;
+             video { //I was being lazy, RIP if you aren't using chrome for style
+                flex-grow:1;
+                height:32px;
+             }
+          }
+       }
+    }
+ }
+ 
+ @keyframes pop-in {
+    0%, 95%{
+       transform:translateY(100%);
+    }
+    100%{
+       transform:translateY(0%);
+    }
+ }

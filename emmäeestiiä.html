@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nistiluola</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #000000, #1a1a1a);
+        overflow: hidden;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .item {
+        display: inline-block;
+        width: calc(50% - 20px);
+        margin: 10px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    .item:hover {
+        transform: translateY(-5px);
+    }
+    .item img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    .item p {
+        margin-top: 10px;
+        font-size: 16px;
+        color: #fff;
+    }
+    .video-container {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+    }
+    .video-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .video-container.active {
+        display: block;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        color: #fff;
+        cursor: pointer;
+    }
+    .background-image {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0.6;
+        z-index: -1;
+    }
+</style>
+</head>
+<body>
+
+<img src="back.jpeg" alt="Futuristic Background" class="background-image">
+
+<div class="container">
+    <div class="item" onclick="playVideo('video1')">
+        <img src="subu.jpg" alt="Subutex pack 8mg">
+        <p>Subutex pack 8mg</p>
+    </div>
+    <div class="item" onclick="playVideo('video2')">
+        <img src="oxy.jpg" alt="80mg oxy">
+        <p>80mg oxy</p>
+    </div>
+    <!-- Add more items as needed -->
+</div>
+
+<div id="video1" class="video-container">
+    <div class="video-wrapper">
+        <video class="fullscreen-video">
+            <source src="item1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <span class="close-btn" onclick="closeVideo('video1')">X</span>
+    </div>
+</div>
+
+<div id="video2" class="video-container">
+    <div class="video-wrapper">
+        <video class="fullscreen-video">
+            <source src="item2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <span class="close-btn" onclick="closeVideo('video2')">X</span>
+    </div>
+</div>
+
+<!-- Add more video containers for each item -->
+
+<script>
+    function playVideo(videoId) {
+        // Pause all videos before playing the clicked one
+        var videos = document.querySelectorAll('.fullscreen-video');
+        for (var i = 0; i < videos.length; i++) {
+            videos[i].pause();
+        }
+
+        // Play the clicked video and show its container
+        var videoContainer = document.getElementById(videoId);
+        var video = videoContainer.querySelector('video');
+        video.play();
+        videoContainer.classList.add('active');
+    }
+
+    function closeVideo(videoId) {
+        // Pause the video and hide its container
+        var videoContainer = document.getElementById(videoId);
+        var video = videoContainer.querySelector('video');
+        video.pause();
+        videoContainer.classList.remove('active');
+    }
+</script>
+
+</body>
+</html>
